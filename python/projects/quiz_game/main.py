@@ -2,7 +2,7 @@ from question_model import Question
 from data import question_data
 from quiz_brain import QuizBrain
 
-#build a new question bank list of question objects
+#list to store question objects
 question_bank = []
 #loop through question data list to get dict items and seperate them 
 #question = {"text": "A slug's blood is green.", "answer": "True"},
