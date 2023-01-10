@@ -2,18 +2,20 @@ from turtle import Screen, Turtle
 from paddle import Paddle
 from ball import Ball
 from scoreboard import Scoreboard
+
 import time
 
-#create the screen
+#create game screen
 screen = Screen()
+#setup background color, diameter & title
 screen.bgcolor("black")
 screen.setup(width=800, height=600)
-screen.title("Emir Pong")
+screen.title("Pong Game")
 #turn off animation
 screen.tracer(0)
-
+#create scoreboard object
 scoreboard = Scoreboard()
-#initiate right & left paddle
+#inititate right & left paddle
 r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
 
@@ -24,10 +26,11 @@ screen.onkey(r_paddle.go_down, "Down")
 screen.onkey(l_paddle.go_up, "w")
 screen.onkey(l_paddle.go_down, "s")
 
+#create ball object
 ball = Ball()
 
-
 game_is_on = True
+
 while game_is_on:
   #sleep method to slow screen refresh time, setting ball speed
   time.sleep(ball.move_speed)
@@ -39,9 +42,8 @@ while game_is_on:
   if ball.ycor() > 280 or ball.ycor() < -280:
     #bounce when the ball hits the wall
     ball.bounce_y()
-  #detect collision with right paddle
-    #use .distance method to detect when ball is near the paddle
-  if ball.distance(r_paddle) < 50 and ball.xcor() > 320 or ball.distance(l_paddle) < 50 and ball.xcor() < -320:
+  #detect collision with right paddle using distance method
+  if ball.distance(r_paddle) < 40 and ball.xcor() > 320 or ball.distance(l_paddle) < 40 and ball.xcor() < -320:
     ball.bounce_x()
       
   #detect when right paddle misses

@@ -1,4 +1,4 @@
-from turtle import Screen, Turtle
+from turtle import Turtle
 
 #create the ball and make it move
 class Ball(Turtle):
