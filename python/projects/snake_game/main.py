@@ -1,3 +1,14 @@
+from turtle import Screen
+from snake import Snake
+from food import Food
+from scoreboard import Scoreboard
+
+import time
+
+screen = Screen()
+#set screen diameter
+screen.setup(width=600, height=600)
+screen.bgcolor("black")
 screen.title("Snake game")
 #set screen to 0, blank
 screen.tracer(0)
@@ -6,7 +17,7 @@ screen.tracer(0)
 snake = Snake()
 #food object
 food = Food()
-#
+#scoreboard object
 scoreboard = Scoreboard()
 
 #listen to key strokes
@@ -44,7 +55,6 @@ while game_is_on:
     if snake.head.distance(segment) < 10:
       game_is_on = False
       scoreboard.game_over
-
 
 #waits for user to exit
 screen.exitonclick()
