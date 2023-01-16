@@ -27,16 +27,8 @@ while len(guessed_states) < 50:
                                   prompt="What's another state's name?").title()
   #exit to kill game 
   if answer_state == "Exit":
-    ##list comprehension
-    ##missing_states = [new_item for state in all_states if state not in guessed_states]
-    #new list of missing states on exit
-    missing_states = []
-    #for loop to go through all states
     #if a state is not in guessed_states, it's a missed state
-    for state in all_states:
-      if state not in guessed_states:
-        #list of missed states
-        missing_states.append(state)
+    missing_states = [state for state in all_states if state not in guessed_states]
     #construct data frame of missing states
     new_data = pandas.DataFrame(missing_states)
     #write to file states that were missed by the user
