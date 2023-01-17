@@ -14,7 +14,6 @@ image = "blank_states_img.gif"
 turtle.addshape(image)
 turtle.shape(image)
 
-
 data = pandas.read_csv("50_states.csv")
 #convert data to list
 all_states = data.state.to_list()
