@@ -1,0 +1,1 @@
+#program to code words to phonetic alphabet
