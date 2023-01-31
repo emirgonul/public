@@ -1,3 +1,4 @@
 program to generate and save login info
 to do: 
--option to add password complexity 
+-feature to set password complexity 
+-option to select number of characters
