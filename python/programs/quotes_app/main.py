@@ -22,7 +22,7 @@ def get_images():
 
 
 window = Tk()
-window.title("My life is dope and I do dope shit.")
+window.title("kanye api data")
 window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
 canvas = Canvas(width=300, height=414)
