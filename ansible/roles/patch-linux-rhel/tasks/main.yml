@@ -1,0 +1,14 @@
+---
+- name: Update package cache
+  yum:
+    name: '*'
+    state: latest
+  register: yum_update_result
+
+- name: Display packages that have been updated
+  debug:
+    var: yum_update_result
+
+- name: Reboot the server if updates are available
+  reboot:
+  when: yum_update_result|changed

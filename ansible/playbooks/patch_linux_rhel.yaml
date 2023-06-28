@@ -1,0 +1,10 @@
+#playbook will connect to the specified servers, update the package cache using the yum module, 
+#register the result, display the updated packages using the debug module
+#reboot the servers if any updates were applied.
+
+---
+- name: Patch Linux RHEL servers
+  hosts: rhel_servers
+  become: true
+  roles:
+    - patch-linux-rhel

@@ -1,0 +1,12 @@
+#playbook will install the required packages (openssl, openssl-devel, openssl-perl)
+#generate an SSL certificate request cp to the AD server
+#submit the request to the Certificate Authority using OpenSSL
+#import the cert & join the Linux server to AD using OpenSSL.
+---
+- name: Join Linux servers to Active Directory
+  hosts: all
+  become: true
+  vars:
+    ad_domain: your_domain.com
+  roles:
+    - join-ad-with-openssl

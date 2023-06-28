@@ -1,0 +1,43 @@
+---
+- name: Install required packages
+  package:
+    name: '{{ item }}'
+    state: present
+  loop:
+    - openssl
+    - openssl-devel
+    - openssl-perl
+
+- name: Generate SSL certificate request
+  openssl_csr:
+    privatekey_path: /etc/ssl/private/ad.key
+    csr_path: /etc/ssl/certs/ad.csr
+    common_name: '{{ ad_domain }}'
+
+- name: Copy SSL certificate request to the Active Directory server
+  copy:
+    src: /etc/ssl/certs/ad.csr
+    dest: /path/to/ad.csr
+
+- name: Submit certificate request to the Active Directory Certificate Authority
+  # Execute the required command to submit the CSR to the CA using OpenSSL
+  # Replace the command below with the actual command required by your CA
+  # Example: openssl ca -in /path/to/ad.csr -out /path/to/ad.crt -CA /path/to/ca.crt -CAkey /path/to/ca.key -extensions v3_req -config /path/to/openssl.cnf
+  command: openssl ca -in /path/to/ad.csr -out /path/to/ad.crt
+
+- name: Import the Active Directory server certificate
+  openssl_x509_certificate:
+    name: /etc/ssl/certs/ad.crt
+    state: present
+    path: /etc/ssl/certs/ad.crt
+
+- name: Join the Linux server to Active Directory
+  # Execute the required command to join the server to AD using OpenSSL
+  # Replace the command below with the actual command required for your setup
+  # Example: openssl s_client -connect ad.domain.com:636 -CAfile /path/to/ca.crt
+  command: openssl s_client -connect ad.domain.com:636 -CAfile /path/to/ca.crt
+  register: join_ad_result
+
+- name: Display the result of joining Active Directory
+  debug:
+    var: join_ad_result
