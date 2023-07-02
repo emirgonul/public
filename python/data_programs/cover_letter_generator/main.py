@@ -3,8 +3,8 @@ from docxtpl import DocxTemplate
 
 #setup directory and variable info
 PATH = '/Users/emir/gitrepo/public/python/data_programs/cover_letter_generator/'
-company_name = input("Enter name of the Company : ")
-position_name = input("Enter name of the Position: ")
+company_name = input("Enter name of the Company : ").title()
+position_name = input("Enter name of the Position: ").title()
 
 #setup variables to be replaced
 context = { 
@@ -28,3 +28,8 @@ if not isExist:
 
 # Save the file with personalized filename
 doc.save(f'{PATH}letters/{company_name}/Emir_Gonul_'+company_name+'_'+position_name+'.docx')
+
+#verify file and print results
+success = os.path.exists(f'{PATH}letters/{company_name}/Emir_Gonul_'+company_name+'_'+position_name+'.docx')
+if success:
+   print(f'{company_name}/Emir_Gonul_'+company_name+'_'+position_name+'.docx created!')
