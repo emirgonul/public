@@ -1,13 +1,15 @@
 import os
 import pandas as pd
+from turtle import Screen
 from datetime import date
 from docxtpl import DocxTemplate
 #TODO: create functions
 
+screen = Screen()
 #setup directory and variable info
 PATH = '/Users/emir/gitrepo/public/python/data_programs/cover_letter_generator/'
-company_name = input("Enter name of the Company : ").title()
-position_name = input("Enter name of the Position: ").title()
+company_name = screen.textinput(title="Company Name", prompt="Enter name of the company: ").title()
+position_name = screen.textinput(title="Position Name", prompt="Enter name of the position: ").title()
 
 #setup variables to be replaced
 context = { 
@@ -16,7 +18,7 @@ context = {
            }
 
 #setup which name & file
-first_name = input('legal or short name?\n l for legal, s for short\n:').lower()
+first_name = screen.textinput(title="legal or short name?", prompt="Enter l for legal, s for short")
 if first_name == 'l':
    name = 'Emirhan_Gonul'
 else:
