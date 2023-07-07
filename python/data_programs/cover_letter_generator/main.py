@@ -5,7 +5,10 @@ from datetime import date
 from docxtpl import DocxTemplate
 #TODO: create functions
 
+#setup prompt screen
 screen = Screen()
+screen.setup(100, 50)
+
 #setup directory and variable info
 PATH = '/Users/emir/gitrepo/public/python/data_programs/cover_letter_generator/'
 company_name = screen.textinput(title="Company Name", prompt="Enter name of the company: ").title()
@@ -56,6 +59,6 @@ data = {
 }
 #create data frame, #record entry to csv
 df = pd.DataFrame(data)
-df.to_excel('/Users/emir/Desktop/app_list.csv', mode='a', index=False, header=False) 
+df.to_csv(f'{PATH}/app_list.csv', mode='a', index=False, header=False) 
 # print message
 print("Data appended successfully.")
