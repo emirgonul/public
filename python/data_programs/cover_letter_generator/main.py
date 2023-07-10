@@ -3,6 +3,7 @@ import pandas as pd
 from turtle import Screen
 from datetime import date
 from docxtpl import DocxTemplate
+from tkinter import messagebox
 #TODO: upgrade to class based program
 
 #setup prompt screen
@@ -61,8 +62,8 @@ def df(name):
    #create data frame, #record entry to csv
    df = pd.DataFrame(data)
    df.to_csv(f'{PATH}/app_list.csv', mode='a', index=False, header=False) 
-   #print message
-   print("Data appended successfully.")
+   #display message
+   messagebox.showinfo("Success ", "Data appended successfully")
 
 #main function to call other functions
 def main(name):
