@@ -1,6 +1,6 @@
 import os
-#TODO:update print feature
-
+#TODO:1.update print feature
+#2. update fixed directory paths to dynamic 
 
 #directories
 dir1 = "/Users/emir/Desktop/testfolder/t1"
@@ -32,9 +32,9 @@ print("Same files:")
 print(same_files)
 print()
 
-print("Files only in directory A:")
+print(f"Files only in directory {dir1}:")
 print(only_dir1)
 print()
 
-print("Files only in directory B:")
+print(f"Files only in directory {dir2}:")
 print(only_dir2)
